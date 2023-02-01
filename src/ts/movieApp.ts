@@ -1,7 +1,7 @@
 import { IMovie } from "./models/Movie";
 import { getData } from "./services/movieservice";
 
-let movies: IMovie[] = [];
+export let movies: IMovie[] = [];
 
 export const init = () => {
   let form = document.getElementById("searchForm") as HTMLFormElement;
