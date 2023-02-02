@@ -1,45 +1,118 @@
-/**
- * @jest-environment jsdom
- */
-// import { movieSort } from "../functions";
-// import { movies } from "../movieApp";
-
-// jest.mock("./../services/movieservice.ts");
-
-// test('should print HTML correctly', async () => {
-
-//     await movieSort(movies);
-//     expect(movies[0].Title).toBe("The Front End struggle");
-//   })
-
 import { IMovie } from "../models/Movie";
-import * as func from "../functions";
-// import { IMovie } from "./models/Movie";
+import * as functions from "../functions";
 
-// export const movieSort = (movies: IMovie[], desc: boolean = true) => {
-//   return movies.sort((a: IMovie, b: IMovie) => {
-//     if (desc) {
-//       if (a.Title > b.Title) return 1;
-//       if (a.Title < b.Title) return -1;
 
-//       return 0;
-//     } else {
-//       if (a.Title > b.Title) return -1;
-//       if (a.Title < b.Title) return 1;
+/*****************************************************
+ *                   movieSort
+ ****************************************************/
 
-//       return 0;
-//     }
-//   });
-// };
+describe("Tests for function movieSort", () => {
+    test("Test if sorting is correct when desc is true (descending sort)", () => {
 
-test("test sorting", ()=> {
-    let movies: IMovie[] = [
-        {Title: "A-Team", imdbID: "10", Type: "action", Poster: "", Year: "1992"},
-        {Title: "Bee Movie", imdbID: "1", Type: "comedy", Poster: "", Year: "1999"},
-        {Title: "Contane", imdbID: "1", Type: "comedy", Poster: "", Year: "1999"},
+        let testData: IMovie[] = [
+            {
+                Title: "E-Titel",
+                imdbID: "",
+                Type: "", 
+                Poster: "",
+                Year: ""
+            },
+            {
+                Title: "B-Titel",
+                imdbID: "",
+                Type: "", 
+                Poster: "",
+                Year: ""
+            },
+            {
+                Title: "A-Titel",
+                imdbID: "",
+                Type: "", 
+                Poster: "",
+                Year: ""
+            },
+            {
+                Title: "C-Titel",
+                imdbID: "",
+                Type: "", 
+                Poster: "",
+                Year: ""
+            },
+            // 2 Identical objects to test that sorting return 0.
+            {
+                Title: "D-Titel",
+                imdbID: "",
+                Type: "", 
+                Poster: "",
+                Year: ""
+            },
+
+            {
+                Title: "D-Titel",
+                imdbID: "",
+                Type: "", 
+                Poster: "",
+                Year: ""
+            }
         ];
 
-        func.movieSort(movies, true);
+        const sortList: IMovie[] = functions.movieSort(testData, true);
 
-        expect(movies[0].Title).toBe("A-Team");
-})
+        expect(sortList[0].Title).toBe("A-Titel");
+    });
+
+    test("Test if sorting is correct when desc is false (ascending sort)", () => {
+
+        let testData: IMovie[] = [
+            {
+                Title: "E-Titel",
+                imdbID: "",
+                Type: "", 
+                Poster: "",
+                Year: ""
+            },
+            {
+                Title: "B-Titel",
+                imdbID: "",
+                Type: "", 
+                Poster: "",
+                Year: ""
+            },
+            {
+                Title: "A-Titel",
+                imdbID: "",
+                Type: "", 
+                Poster: "",
+                Year: ""
+            },
+            {
+                Title: "C-Titel",
+                imdbID: "",
+                Type: "", 
+                Poster: "",
+                Year: ""
+            },
+            // 2 Identical objects to test that sorting return 0.
+            {
+                Title: "D-Titel",
+                imdbID: "",
+                Type: "", 
+                Poster: "",
+                Year: ""
+            },
+
+            {
+                Title: "D-Titel",
+                imdbID: "",
+                Type: "", 
+                Poster: "",
+                Year: ""
+            }
+        ];
+
+        const sortList: IMovie[] = functions.movieSort(testData, false);
+
+        expect(sortList[0].Title).toBe("E-Titel");
+    });
+
+});

@@ -1,17 +1,17 @@
 import { IMovie } from "./models/Movie";
 import { getData } from "./services/movieservice";
 
-export let movies: IMovie[] = [];
+let movies: IMovie[] = [];
 
 export const init = () => {
   let form = document.getElementById("searchForm") as HTMLFormElement;
   form.addEventListener("submit", (e: SubmitEvent) => {
     e.preventDefault();
-    handleSubmit();
+    exports.handleSubmit();
   });
 };
 
-export async function handleSubmit() {
+export async function handleSubmit() { //Done
   let searchText = (document.getElementById("searchText") as HTMLInputElement)
     .value;
 

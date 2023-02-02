@@ -1,24 +1,14 @@
 import { getData } from "../services/movieservice";
+import {mockMovies} from "../services/__mocks__/movieservice";
 
 jest.mock("axios", () =>({
     get: async (url: string) => {
         return new Promise((resolve,reject) => {
             if(url.endsWith("error")) {
-                reject([]);
+                reject({data:[], status: 500});
             }
             else {
-                resolve([{
-                    Title: "Awesome",
-                    imdbID: "10",
-                    Type: "action",
-                    Poster: "...", 
-                    Year: "1992"},
-                
-                {   Title: "Lame", 
-                    imdbID: "1",
-                    Type: "comedy",
-                    Poster: "...", 
-                    Year: "1999"},]);
+                resolve({ data:mockMovies, status: 200 }); 
             }
         }) 
     }
@@ -26,11 +16,14 @@ jest.mock("axios", () =>({
 
     test("should get data correctly", async () =>{
         let data = await getData("test");
+   
+        // expect(data).toBe(4);
     })
 
     test("should get error getting data", async ()=> {
         try {
             let data = await getData("error");
+            // console.log(data);
         }
         catch (error:any) {
             expect(error.length).toBe(0);
