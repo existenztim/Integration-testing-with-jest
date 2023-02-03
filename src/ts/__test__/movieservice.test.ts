@@ -1,31 +1,37 @@
 import { getData } from "../services/movieservice";
 import {mockMovies} from "../services/__mocks__/movieservice";
-
-jest.mock("axios", () =>({
+ 
+jest.mock("axios", () => ({
     get: async (url: string) => {
-        return new Promise((resolve,reject) => {
-            if(url.endsWith("error")) {
-                reject({data:[], status: 500});
-            }
-            else {
-                resolve({ data:mockMovies, status: 200 }); 
-            }
-        }) 
-    }
-}))
+      	return new Promise((resolve, reject) => {
+        	if (url.endsWith("error")) {
+            	reject({data:[], status: 500});
+        	} else {
+				resolve({ data:{Search:mockMovies, status: 200 }}); 
+        	}
+      	});
+	}
+}));
 
-    test("should get data correctly", async () =>{
-        let data = await getData("test");
-   
-        // expect(data).toBe(4);
-    })
+/*****************************************************
+ *                   getData
+ ****************************************************/
 
-    test("should get error getting data", async ()=> {
-        try {
-            let data = await getData("error");
-            // console.log(data);
-        }
-        catch (error:any) {
-            expect(error.length).toBe(0);
-        }
+describe("tests function getData()", () => {
+  
+    test("Should success getting data", async () => {
+      
+    const data = await getData("test");
+  
+		expect(data.length).toBe(3);
+		expect(data[0].Title).toBe("A-Movie");
     });
+  
+    test("Should get error getting data", async () => {
+      
+    	const data = await getData("error");
+  
+      	expect(data.length).toBe(0);
+    });
+  
+});

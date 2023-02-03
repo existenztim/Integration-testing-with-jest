@@ -1,7 +1,6 @@
 import { IMovie } from "../models/Movie";
 import * as functions from "../functions";
 
-
 /*****************************************************
  *                   movieSort
  ****************************************************/
@@ -59,6 +58,7 @@ describe("Tests for function movieSort", () => {
         const sortList: IMovie[] = functions.movieSort(testData, true);
 
         expect(sortList[0].Title).toBe("A-Titel");
+        expect(sortList[5].Title).toBe("E-Titel");
     });
 
     test("Test if sorting is correct when desc is false (ascending sort)", () => {
@@ -113,6 +113,6 @@ describe("Tests for function movieSort", () => {
         const sortList: IMovie[] = functions.movieSort(testData, false);
 
         expect(sortList[0].Title).toBe("E-Titel");
+        expect(sortList[5].Title).toBe("A-Titel");
     });
-
 });

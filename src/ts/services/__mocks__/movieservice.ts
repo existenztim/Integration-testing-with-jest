@@ -26,18 +26,16 @@ export let mockMovies: IMovie[] = [
 
 export async function getData(searchText: string): Promise<IMovie[]> {
     return new Promise((resolve, reject) => {
-      if (searchText !== "") {
+      
+        if (searchText !== "" && searchText !== "error") {
         resolve(mockMovies);
-        } else {
-        reject([]);
+        } else if (searchText === "error") {
+        reject("error");
+        } else if (searchText === "") {
+            resolve([]);
+        }
+        else {
+            reject([]);
         }
     });
 }
-
-// export interface IMovie {
-//     Title: string;
-//     imdbID: string;
-//     Type: string;
-//     Poster: string;
-//     Year: string;
-//   }
