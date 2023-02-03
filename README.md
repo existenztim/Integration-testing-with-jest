@@ -1,35 +1,16 @@
-# Inlämning - Integrationstester
+# Test assignment - unittest with jest
 
-Detta projekt skall fungera som mall för vad ni skall testa i denna del av kursen, asynkrona tester.
+Assignment at Medieinstitutet. I learned how to mock an api and
+run integration tests with my own code to emulate an api request. 
 
-## Att göra
+## Code coverage
 
-Klona ner detta repo och ta bort .git-mappen. Skapa ett eget repo och koppla det till er mapp (där det klonade projektet ligger). Nu har ni ett eget projekt att skriva tester för. Se till att ni installerar jest och alla beroenden som behövs för att kunna göra och köra era tester.
+100% Statements 51/51
+88.88% Branches 8/9
+100% Functions 7/7
+100% Lines 42/42
 
-Ni behöver i detta projekt skriva tester som testar så många funktioner ni hinner i filerna:
 
-- ts/movieApp.ts
-- ts/functions.ts
-- ts/services/movieservice.ts
+## Code stack
 
-Ni behöver inte testa main.ts i detta projekt.
-
-## Förslag
-
-Gå igenom koden i lugn och ro och se till att ni förstår vad den gör och hur information skickas till och från funktionerna i filerna. Börja därefter med att skriva tester för koden som är närmast datakällan, alltså movieservice.ts. Skriv därefter tester som använder sig av movieservice.ts och flytta er närmare och närmare webbläsaren. 
-
-## Betygskriterier
-
-För G:
-
-- Skriv tester för minst 70% av funktionerna
-- Skriva grundläggande integrationstester
-- Använda enklare mock-objekt.
-- Ha code coverage på minst 60%
-
-För VG:
-
-- Skriv tester för samtliga funktioner i filerna angivna ovan
-- Bättre struktur på mock-objekten
-- Kunna strukturera dina tester och visa på god förståelse i testerna.
-- Ha code coverage på över 90%
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white)![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
